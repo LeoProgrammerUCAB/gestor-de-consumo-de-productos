@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gestor.de.cosumo.DTO.ConsumirDTO;
+import com.gestor.de.cosumo.DTO.TransaccionDeProductoDTO;
 import com.gestor.de.cosumo.services.ProductoService;
 
 @RestController
@@ -17,17 +17,17 @@ public class ProductoController {
     private ProductoService productoService;
 
     @PostMapping("/llenar")
-    public void llenar() {
-        productoService.llenar();
+    public void llenar(@RequestBody TransaccionDeProductoDTO body) throws Exception {
+        productoService.llenar(body.cantidad, body.tipo);
     }
 
     @PostMapping("/consumir")
-    public void consumir(@RequestBody ConsumirDTO body) {
+    public void consumir(@RequestBody TransaccionDeProductoDTO body) throws Exception {
         productoService.consumir(body.cantidad, body.tipo);
     }
 
     @GetMapping("/consultar")
-    public String consultar() {
+    public String consultar() throws Exception {
         return productoService.consultar();
     }
 
