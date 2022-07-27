@@ -9,7 +9,11 @@ public class ProductoService {
     }
 
     public void consumir(int cantidad, char tipo) {
-        // Print consumir cantidad tipo
         System.out.println("consumir " + cantidad + " productos tipo: " + tipo);
+    }
+
+    public String consultar() {
+        System.out.println("Consultando");
+        return "Hay tantos productos";
     }
 }
