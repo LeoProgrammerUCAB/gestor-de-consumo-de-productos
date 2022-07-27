@@ -13,7 +13,7 @@ public class RespaldoController {
     @Autowired
     private RespaldoService respaldoService;
 
-    @PostMapping("/respaldar")
+    @PostMapping("/")
     public void respaldar() {
         respaldoService.respaldar();
     }
