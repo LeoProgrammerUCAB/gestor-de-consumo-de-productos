@@ -26,7 +26,7 @@ public class ProductoController {
         productoService.consumir(body.cantidad, body.tipo);
     }
 
-    @GetMapping("/consultar")
+    @GetMapping(value = "/consultar", produces = "application/json")
     public String consultar() throws Exception {
         return productoService.consultar();
     }
