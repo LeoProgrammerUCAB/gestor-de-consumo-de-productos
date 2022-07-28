@@ -1,8 +1,8 @@
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\GestorDeCosumoApplication.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\services\RemoteTarro.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\services\RespaldoService.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\controllers\ProductoController.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\controllers\RespaldoController.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\DTO\TransaccionDeProductoDTO.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\ServletInitializer.java
-D:\Documentos\UCAB\Semestre Abr-Ago 2022\Sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\services\ProductoService.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\services\RespaldoService.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\controllers\ProductoController.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\services\RemoteTarro.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\ServletInitializer.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\services\ProductoService.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\controllers\RespaldoController.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\GestorDeCosumoApplication.java
+C:\Users\Thecnomac\Documents\Universidad\9no semestre\sistemas distribuidos\gestor-de-consumo-de-productos\RestAPI\src\main\java\com\gestor\de\cosumo\DTO\TransaccionDeProductoDTO.java

@@ -21,11 +21,16 @@ public class Tarro implements RemoteTarro {
     }
 
     public synchronized String consultarProductos() throws Exception {
+        System.out.println("Consultando...");
+        // Esperamos unos segundos para simular una consulta
+        Thread.sleep(10000);
         return this.leerTransacciones().toJSONString();
     }
 
     public synchronized void agregarProducto(char tipo, int cantidad) throws Exception, RemoteException {
-
+        System.out.println("Llenando...");
+        // Esperamos unos segundos para simular una consulta
+        Thread.sleep(10000);
         String key = "producto" + tipo; // las posibles clves en el JSON son productoA o productoB
         Map<String, Integer> productos = this.leerRepositorio();
         if (productos.containsKey(key)) {
@@ -37,7 +42,10 @@ public class Tarro implements RemoteTarro {
         }
     }
 
-    public void consumirProducto(char tipo, int cantidad) throws Exception {
+    public synchronized void consumirProducto(char tipo, int cantidad) throws Exception {
+        System.out.println("Consumiendo...");
+        // Esperamos unos segundos para simular una consulta
+        Thread.sleep(10000);
         Map<String, Integer> productos = this.leerRepositorio();
 
         String key = "producto" + tipo;
@@ -51,7 +59,7 @@ public class Tarro implements RemoteTarro {
         }
     }
 
-    private Map<String, Integer> leerRepositorio() throws Exception {
+    private synchronized Map<String, Integer> leerRepositorio() throws Exception {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader("./repositorio.json"));
@@ -77,7 +85,7 @@ public class Tarro implements RemoteTarro {
         }
     }
 
-    private JSONArray leerTransacciones() throws Exception {
+    private synchronized JSONArray leerTransacciones() throws Exception {
         JSONParser parser = new JSONParser();
 
         try {
@@ -92,7 +100,7 @@ public class Tarro implements RemoteTarro {
         }
     }
 
-    private void guardarRepositorio(Map<String, Integer> productos) throws Exception {
+    private synchronized void guardarRepositorio(Map<String, Integer> productos) throws Exception {
         JSONObject jsonObject = new JSONObject();
         for (String producto : productos.keySet()) {
             jsonObject.put(producto, productos.get(producto));
@@ -107,8 +115,9 @@ public class Tarro implements RemoteTarro {
         }
     }
 
-    private void guardarTransaccion(char tipo, int cantidad, String actor) throws Exception {
-        JSONArray transacciones = this.leerTransacciones();
+    private synchronized void guardarTransaccion(char tipo, int cantidad, String actor) throws Exception {
+        // this.leerTransacciones();
+        JSONArray transacciones = new JSONArray();
 
         JSONObject nuevaTransaccion = new JSONObject();
         nuevaTransaccion.put("cantidad", cantidad);
