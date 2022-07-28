@@ -51,9 +51,15 @@ public class Tarro implements RemoteTarro {
         String key = "producto" + tipo;
 
         if (productos.containsKey(key)) {
-            productos.put(key, productos.get(key) - cantidad);
-            this.guardarRepositorio(productos);
-            this.guardarTransaccion(tipo, cantidad, "consumidor");
+
+            //Verify if there are enough products to consume
+            if (productos.get(key) >= cantidad) {
+                productos.put(key, productos.get(key) - cantidad);
+                this.guardarRepositorio(productos);
+                this.guardarTransaccion(tipo, cantidad, "Consumidor");
+            } else {
+                throw new Exception("No hay suficientes productos");
+            }
         } else {
             throw new Exception("Producto " + tipo + " no existe");
         }
