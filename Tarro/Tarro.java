@@ -17,20 +17,25 @@ import com.gestor.de.cosumo.services.RemoteTarro;
 
 public class Tarro implements RemoteTarro {
 
-    public Tarro() throws Exception {
+    private int tiempoDeRespuesta = 0;
+
+    public Tarro() {}
+
+    public Tarro(int tiempoDeRespuesta) throws Exception {
+        this.tiempoDeRespuesta = tiempoDeRespuesta;
     }
 
     public synchronized String consultarProductos() throws Exception {
         System.out.println("Consultando...");
         // Esperamos unos segundos para simular una consulta
-        Thread.sleep(10000);
+        Thread.sleep(this.tiempoDeRespuesta);
         return this.leerTransacciones().toJSONString();
     }
 
     public synchronized void agregarProducto(char tipo, int cantidad) throws Exception, RemoteException {
         System.out.println("Llenando...");
         // Esperamos unos segundos para simular una consulta
-        Thread.sleep(10000);
+        Thread.sleep(this.tiempoDeRespuesta);
         String key = "producto" + tipo; // las posibles clves en el JSON son productoA o productoB
         Map<String, Integer> productos = this.leerRepositorio();
         if (productos.containsKey(key)) {
@@ -45,7 +50,7 @@ public class Tarro implements RemoteTarro {
     public synchronized void consumirProducto(char tipo, int cantidad) throws Exception {
         System.out.println("Consumiendo...");
         // Esperamos unos segundos para simular una consulta
-        Thread.sleep(10000);
+        Thread.sleep(this.tiempoDeRespuesta);
         Map<String, Integer> productos = this.leerRepositorio();
 
         String key = "producto" + tipo;
@@ -58,6 +63,7 @@ public class Tarro implements RemoteTarro {
                 this.guardarRepositorio(productos);
                 this.guardarTransaccion(tipo, cantidad, "Consumidor");
             } else {
+                System.out.println("No hay suficientes productos");
                 throw new Exception("No hay suficientes productos");
             }
         } else {
@@ -143,4 +149,5 @@ public class Tarro implements RemoteTarro {
             e.printStackTrace();
         }
     }
+
 }

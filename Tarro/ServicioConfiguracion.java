@@ -38,4 +38,13 @@ public class ServicioConfiguracion {
             return 0;
         }
     }
+
+    public int getTiempoDeRespuesta() {
+        // Verify if tiempoDeRespuesta exists in config file
+        if (config.containsKey("tiempoDeRespuesta")) {
+            return Integer.parseInt(config.get("tiempoDeRespuesta"));
+        } else {
+            return 0;
+        }
+    }
 }

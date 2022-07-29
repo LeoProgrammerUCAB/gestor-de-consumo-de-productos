@@ -27,10 +27,13 @@ public class ServicioConsumir {
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        if (response.statusCode() != 201) {
+        if (response.statusCode() == 201) {
+            System.out.println("Consumo exitoso de " + cantidad + " unidades del producto " + tipo);         
+        }else if (response.statusCode() == 400) {
+            throw new Exception("No hay suficientes unidades del producto " + tipo);
+        }
+        else{
             throw new Exception("Error al consumir el producto " + tipo);
-        }else{
-            System.out.println("Consumo exitoso de " + cantidad + " unidades del producto " + tipo);
         }
     };
 
