@@ -13,7 +13,7 @@ public class ServidorTarro {
 
     public static void main(String[] args) {
         try {
-            tarro = new Tarro();
+            tarro = new Tarro(config.getTiempoDeRespuesta());
             Remote remote = UnicastRemoteObject.exportObject(tarro, 0);
             Registry registry = LocateRegistry.createRegistry(config.getPuerto());
             registry.bind("tarro", remote);

@@ -5,7 +5,9 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ProductoService {
@@ -32,15 +34,27 @@ public class ProductoService {
     public void consumir(int cantidad, char tipo) throws Exception {
         // RemoteTarro tarro = getRemoteTarroStub();
         System.out.println("consumir " + cantidad + " productos tipo: " + tipo);
-        tarro.consumirProducto(tipo, cantidad);
+        try{
+            tarro.consumirProducto(tipo, cantidad);       
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cantidad de productos insuficientes");
+        }
         System.out.println("Producto consumido");
     }
 
     public String consultar() throws Exception {
         // RemoteTarro tarro = getRemoteTarroStub();
         System.out.println("Consultando");
-        String response = tarro.consultarProductos();
-        System.out.println("Producto consultado");
-        return response;
+        try{
+            return tarro.consultarProductos();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cantidad de productos insuficientes");
+        }
+        // System.out.println("Producto consultado");
+        // return response;
     }
 }
