@@ -20,10 +20,23 @@ public class Productor{
 
     }
     private static void llenar(){
-        ServicioLlenado servicio = new ServicioLlenado();        
+        ServicioLlenado servicioLlenado = new ServicioLlenado();        
         try {
-            servicio.llenar('A', 60);
-            servicio.llenar('B', 40);
+            servicioLlenado.llenar('A', 60);
+            servicioLlenado.llenar('B', 40);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void respaldar(){
+        ServicioRespaldo servicioRespaldo = new ServicioRespaldo();
+        try {
+            servicioRespaldo.respaldar();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -53,6 +66,7 @@ public class Productor{
                         break;
                     case 2:
                         System.out.println("Solicitando respaldo");
+                        respaldar();
                         break;
                     case 3:
                         System.out.println("Solicitando restauración");

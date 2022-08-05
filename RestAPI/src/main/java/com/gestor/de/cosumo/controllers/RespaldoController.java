@@ -14,7 +14,7 @@ public class RespaldoController {
     private RespaldoService respaldoService;
 
     @PostMapping("/")
-    public void respaldar() {
+    public void respaldar() throws Exception {
         respaldoService.respaldar();
     }
 
