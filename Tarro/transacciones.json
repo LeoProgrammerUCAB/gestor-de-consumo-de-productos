@@ -1,3 +1,1 @@
-
-[{"actor":"Consumidor","fecha":"Thu Aug 04 22:31:01 VET 2022","inventario_resultante":{"productoB":293,"productoA":43},"tipo_producto":"A","cantidad":2}]
-
+[{"actor":"Consumidor","fecha":"Fri Aug 05 08:30:17 VET 2022","inventario_resultante":{"productoB":323,"productoA":88},"tipo_producto":"A","cantidad":10},{"actor":"Consumidor","fecha":"Fri Aug 05 08:32:04 VET 2022","inventario_resultante":{"productoB":318,"productoA":88},"tipo_producto":"B","cantidad":5},{"actor":"Productor","fecha":"Fri Aug 05 08:32:54 VET 2022","inventario_resultante":{"productoB":318,"productoA":148},"tipo_producto":"A","cantidad":60},{"actor":"Productor","fecha":"Fri Aug 05 08:33:04 VET 2022","inventario_resultante":{"productoB":358,"productoA":148},"tipo_producto":"B","cantidad":40}]

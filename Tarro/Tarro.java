@@ -128,8 +128,8 @@ public class Tarro implements RemoteTarro {
     }
 
     private synchronized void guardarTransaccion(char tipo, int cantidad, String actor) throws Exception {
-        // this.leerTransacciones();
-        JSONArray transacciones = new JSONArray();
+       
+        JSONArray transacciones = this.leerTransacciones();
 
         JSONObject nuevaTransaccion = new JSONObject();
         nuevaTransaccion.put("cantidad", cantidad);
