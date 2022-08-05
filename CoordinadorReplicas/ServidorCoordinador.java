@@ -1,39 +1,36 @@
-public class ServidorCoordinador {
-    public static int LISTEN_PORT = 5476;
-	public static int TIMEOUT = 10000;
-	public static int SLEEP_TIME = 10000;
-	
-	public static void main(String[] args) {
-		Map<Socket, Participant > connections = new ConcurrentHashMap<>();
-		
-		Log log = new Log();
-		FakeResource fr = new FakeResource();
-		
-		ListenThread lt = new ListenThread(LISTEN_PORT, connections);
-		new Thread(lt).start();
-		Coordinator coordinator = new Coordinator(log, fr, connections);
-		
-		
-		Scanner sc = new Scanner(System.in);
-		while(true){
-				String c = sc.next().trim();
-				if(c.equals("start-commit")){
-					System.out.println("starting two phase commit.");
-					coordinator.startCommit();
-				}else if(c.equals("e")){
-					System.out.println("exiting..");
-					sc.close();
-					lt.finish();
-					return;
-				}else if(c.equals("c")){
-					System.out.println("Active clients:");
-					for (Map.Entry<Socket, Participant> entry : connections.entrySet()) {
-						System.out.println(entry.getValue());
-					}
-				}else{
-					System.out.println("unrecognized command.");
-				}
-		}
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
+public class ServidorCoordinador {
+
+    private static Coordinador coordinador;
+
+    public static int LISTEN_PORT = 5000;
+	
+	public static void main(String[] args) throws IOException {
+        coordinador = new Coordinador(new Log());
+		ServerSocket ss = new ServerSocket(LISTEN_PORT);
+
+        String str = "";
+
+        while (!str.equals("stop")) {
+            Socket s = ss.accept();
+            DataInputStream din = new DataInputStream(s.getInputStream());
+
+            String respuesta = din.readUTF();
+            String[] informacion = respuesta.split(";");
+            String transacciones = informacion[1];
+            String comando = informacion[0];
+
+            if (comando.equals("START_2PC")){
+                coordinador.startCommit(transacciones);
+            }
+        
+            din.close();
+            s.close();
+        }
+        ss.close();
 	}
 }
